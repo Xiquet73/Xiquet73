@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication2;
+package view;
 
 /**
  *
@@ -154,7 +154,9 @@ public class Parcelas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        Admin admin = new Admin();
+        this.setVisible(false);
+        admin.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
