@@ -135,9 +135,9 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Menu menu = new Menu();
+        ReservaConfirmada reserva = new ReservaConfirmada();
         this.setVisible(false);
-        menu.setVisible(true);
+        reserva.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
