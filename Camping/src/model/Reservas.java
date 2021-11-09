@@ -24,6 +24,16 @@ public class Reservas {
     public Cliente cliente;
     protected ArrayList<ParcelasReserva> parcelas = new ArrayList<>();
 
+    public Reservas(float precio_dia, float precio_total, Date fecha_entrada, Date fecha_salida, Cliente cliente) {
+        this.precio_dia = precio_dia;
+        this.precio_total = precio_total;
+        this.fecha_entrada = fecha_entrada;
+        this.fecha_salida = fecha_salida;
+        this.cliente = cliente;
+    }
+    
+    
+
     public float getPrecio_dia() {
         return precio_dia;
     }
@@ -67,7 +77,7 @@ public class Reservas {
     public  float realizarReserva(Date fecha_ini, Date fecha_sal, Cliente _cliente, ArrayList<Parcelas> parcelas)
     {
         float coste_total;
-        
+        Reservas reserva = new Reservas( precio_dia, precio_total, fecha_entrada, fecha_salida,cliente);
         coste_total = calcularPrecioTotal(fecha_ini, fecha_sal, parcelas);
         
         return coste_total;
@@ -79,6 +89,7 @@ public class Reservas {
     {
         float coste_total;
         Cliente cliente = new Cliente(id,nombre,apellido,dni, telefono, email );
+        Reservas reserva = new Reservas( precio_dia, precio_total, ini, sal,cliente);
         coste_total = calcularPrecioTotal(ini, sal, parcelas);
         
         return coste_total;
