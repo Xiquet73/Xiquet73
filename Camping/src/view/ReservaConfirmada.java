@@ -29,7 +29,9 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal) {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
-        reserva = new Reserva()
+        reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente);
+        String tot = Float.toString(reserva.getPrecio_total());
+        txtPrecio.setText(tot);
         initComponents();
     }
 
@@ -44,7 +46,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -61,13 +63,13 @@ public class ReservaConfirmada extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Precio total");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecio.setEditable(false);
+        txtPrecio.setBackground(new java.awt.Color(102, 102, 102));
+        txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
+        txtPrecio.setText("Precio total");
+        txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtPrecioActionPerformed(evt);
             }
         });
 
@@ -91,7 +93,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
                         .addGap(57, 57, 57)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jButton1)))
@@ -105,7 +107,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(31, 31, 31))
@@ -127,9 +129,9 @@ public class ReservaConfirmada extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtPrecioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -148,6 +150,6 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

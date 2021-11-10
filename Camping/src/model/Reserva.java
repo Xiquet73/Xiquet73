@@ -5,10 +5,13 @@
  */
 package model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
@@ -35,12 +38,15 @@ public class Reserva {
     */
 
 
-    public Reserva(Date fecha_entrada, Date fecha_salida, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) {
+    public Reserva(String fecha_entrada, String fecha_salida, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yy", Locale.ENGLISH);
+        Date entrada = (Date) formatter.parse(fecha_entrada);
+        Date salida = (Date) formatter.parse(fecha_salida);
         this.parcelasReserva = parcelasReserva;
-        this.fecha_entrada = fecha_entrada;
-        this.fecha_salida = fecha_salida;
+        this.fecha_entrada = entrada;
+        this.fecha_salida = salida;
         this.cliente = cliente;
-        calcularPrecioTotal(fecha_entrada, fecha_salida, parcelasReserva);
+        calcularPrecioTotal(this.fecha_entrada, this.fecha_salida, parcelasReserva);
     }
     
     
