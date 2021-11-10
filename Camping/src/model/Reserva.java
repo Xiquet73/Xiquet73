@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -38,13 +40,19 @@ public class Reserva {
     */
 
 
-    public Reserva(String fecha_entrada, String fecha_salida, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-mm-yy", Locale.ENGLISH);
-        Date entrada = (Date) formatter.parse(fecha_entrada);
-        Date salida = (Date) formatter.parse(fecha_salida);
+    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) throws ParseException {
+        
+        
+ 
+        this.fecha_entrada = new SimpleDateFormat("DD-MM-YY").parse(f_ent);  
+        this.fecha_salida = new SimpleDateFormat("DD-MM-YY").parse(f_sal); 
+        
+      
+
+        
+        
+
         this.parcelasReserva = parcelasReserva;
-        this.fecha_entrada = entrada;
-        this.fecha_salida = salida;
         this.cliente = cliente;
         calcularPrecioTotal(this.fecha_entrada, this.fecha_salida, parcelasReserva);
     }

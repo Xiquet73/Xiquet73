@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import model.ModelCliente;
 import model.ParcelasReserva;
@@ -26,13 +27,14 @@ public class ReservaConfirmada extends javax.swing.JFrame {
      * @param cliente
      * @param parcelareserva
      */
-    public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal) {
+    public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal) throws ParseException {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
         reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente);
         String tot = Float.toString(reserva.getPrecio_total());
-        txtPrecio.setText(tot);
+        
         initComponents();
+        txtPrecio.setText(tot);
     }
 
     /**
