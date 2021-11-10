@@ -105,14 +105,18 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Reservas reservas = new Reservas();
-        reservas.setVisible(true);
         this.setVisible(false);
+        reservas.pack();
+        reservas.setLocationRelativeTo(null);
+        reservas.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Admin admin = new Admin();
-        admin.setVisible(true);
         this.setVisible(false);
+        admin.pack();
+        admin.setLocationRelativeTo(null);
+        admin.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

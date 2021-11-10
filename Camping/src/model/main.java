@@ -42,7 +42,10 @@ public class main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                Menu menu = new Menu();
+                menu.pack();
+                menu.setLocationRelativeTo(null);
+                menu.setVisible(true);
             }
         });
     }
