@@ -15,10 +15,10 @@ import java.util.Date;
 public class Actividades {
     
     private int identificador;
-    private ArrayList<Cliente> clientes = new ArrayList<>();
+    private ArrayList<ModelCliente> clientes = new ArrayList<>();
     private Date hora;
     private TipoActividad actividad;
-    private Cliente cliente;
+    private ModelCliente cliente;
     private ArrayList<Actividades> actividades = new ArrayList<>(); //todas las actividades??
     private ArrayList<Actividades> actividades_dia = new ArrayList<>(); //Actividades que deberían mostrarse en el día
 
@@ -36,11 +36,11 @@ public class Actividades {
         this.identificador = identificador;
     }
 
-    public ArrayList<Cliente> getClientes() {
+    public ArrayList<ModelCliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(ArrayList<Cliente> clientes) {
+    public void setClientes(ArrayList<ModelCliente> clientes) {
         this.clientes = clientes;
     }
 
@@ -73,7 +73,7 @@ public class Actividades {
         return actividades_dia;
     }
         
-    public ArrayList cancelarActividad(ArrayList<Actividades> actividad_escogida, Cliente cliente_actividad)
+    public ArrayList cancelarActividad(ArrayList<Actividades> actividad_escogida, ModelCliente cliente_actividad)
     {
         
         for (int i=0; i < actividades_dia.size(); i++)

@@ -36,6 +36,11 @@ public class ParcelasReserva {
         this.tiendas = tiendas;
     }
     
+    public void anayadirTiendas(Tienda tienda)
+    {
+        this.tiendas.add(tienda);
+    }
+    
     
     
 }

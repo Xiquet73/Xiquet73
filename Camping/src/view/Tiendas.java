@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import model.Datos;
 import model.Parcela;
+import model.ParcelasReserva;
+import model.Tienda;
 
 
 /**
@@ -22,21 +24,32 @@ public class Tiendas extends javax.swing.JFrame {
      */
     
     public Datos datos;
+    public String fecha_ini, fecha_sal;
     public DefaultListModel modeloDer;
+    public DefaultListModel modeloListaTiendas = new DefaultListModel();
     public ArrayList<Parcela> parcelasSelect = new ArrayList<Parcela>();
+    public ArrayList<ParcelasReserva> parcelastiendas = new ArrayList<ParcelasReserva>();
     
     public Tiendas(Datos datos, String fecha_ini, String fecha_sal, DefaultListModel modeloDer) {
         this.datos = datos;
         this.modeloDer = modeloDer;
+        this.fecha_ini = fecha_ini;
+        this.fecha_sal = fecha_sal;
+        
         initComponents();
 
+
+        listaTiendas.setModel(modeloListaTiendas);
         
         for(int i = 0; i<modeloDer.size(); i++){
-            //comboParcelas.addItem(modeloDer.get(i).toString());
+            comboParcelas.addItem(modeloDer.get(i).toString());
             for(int z = 0; z < datos.getParcelas().size(); z++){
+                int der = Integer.parseInt(modeloDer.get(i).toString());
                 
-                if(modeloDer.get(i).equals(datos.getParcelas().get(z))){
+                if(der == datos.getParcelas().get(z).getIdentificador()){
                     parcelasSelect.add(datos.getParcelas().get(z));
+                    ParcelasReserva parcelareserva = new ParcelasReserva(datos.getParcelas().get(z));
+                    parcelastiendas.add(parcelareserva);   
                 }
             }
         }
@@ -58,13 +71,13 @@ public class Tiendas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         comboParcelas = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        Nombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        Metros = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaTiendas = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,19 +98,19 @@ public class Tiendas extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Nombre.setBackground(new java.awt.Color(102, 102, 102));
+        Nombre.setForeground(new java.awt.Color(255, 255, 255));
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NombreActionPerformed(evt);
             }
         });
 
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("M2:");
 
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        Metros.setBackground(new java.awt.Color(102, 102, 102));
+        Metros.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 0));
         jButton1.setText("Añadir");
@@ -115,13 +128,8 @@ public class Tiendas extends javax.swing.JFrame {
             }
         });
 
-        jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Parcela 1", "     Tienda Roja", "Parcela 2", "        Tienda Verde"};
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        listaTiendas.setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane1.setViewportView(listaTiendas);
 
         jButton3.setBackground(new java.awt.Color(175, 53, 53));
         jButton3.setText("Volver");
@@ -149,14 +157,14 @@ public class Tiendas extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Nombre, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Metros, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(36, 36, 36))
         );
@@ -166,16 +174,16 @@ public class Tiendas extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Metros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -191,15 +199,15 @@ public class Tiendas extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NombreActionPerformed
 
     private void comboParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParcelasActionPerformed
         // TODO add your handling code here:
@@ -207,6 +215,32 @@ public class Tiendas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        modeloListaTiendas.clear();
+        int metros = Integer.parseInt(Metros.getText());
+         Tienda tiendas = new Tienda(Nombre.getText(), metros);
+         String id = comboParcelas.getSelectedItem().toString();
+         int idd = Integer.parseInt(id);
+         for (int i = 0; i < parcelastiendas.size(); i++)
+         {
+             System.out.println(parcelastiendas.get(i).getParcela().getIdentificador());
+             System.out.println(idd);
+             if(parcelastiendas.get(i).getParcela().getIdentificador() == idd)
+             {
+                 parcelastiendas.get(i).anayadirTiendas(tiendas);
+             }
+         }
+         
+         for (int i = 0; i < parcelastiendas.size();i++)
+         {
+             modeloListaTiendas.addElement(parcelastiendas.get(i).getParcela().getIdentificador());
+             for(int j = 0; j < parcelastiendas.get(i).getTiendas().size(); j++)
+             {
+                modeloListaTiendas.addElement("      " + parcelastiendas.get(i).getTiendas().get(j).getNombre());
+             }
+             
+         }
+        
         
         
         
@@ -218,24 +252,24 @@ public class Tiendas extends javax.swing.JFrame {
         // obtener la parcela seleccionada en el comboBox
         // comprobar 
         
-        /*
-        Cliente cliente = new Cliente();
+        
+        Cliente cliente = new Cliente(parcelastiendas, fecha_ini, fecha_sal);
         this.setVisible(false);
         cliente.pack();
         cliente.setLocationRelativeTo(null);
         cliente.setVisible(true);
-        */
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        /*
-        Reservas reservas = new Reservas();
+        
+        Reservas reservas = new Reservas(datos);
         this.setVisible(false);
         reservas.pack();
         reservas.setLocationRelativeTo(null);
         reservas.setVisible(true);
-        */
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -274,6 +308,8 @@ public class Tiendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Metros;
+    private javax.swing.JTextField Nombre;
     private javax.swing.JComboBox<String> comboParcelas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -281,11 +317,9 @@ public class Tiendas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<String> listaTiendas;
     // End of variables declaration//GEN-END:variables
 
 }

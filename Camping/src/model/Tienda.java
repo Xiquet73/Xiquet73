@@ -9,18 +9,16 @@ package model;
  *
  * @author Pablo
  */
-class Tienda {
+public class Tienda{
     
     private String nombre;
-    private float metros_cuadrados;
-    private int identificador;
+    private int metros_cuadrados;
 
 
     
-    public Tienda(String nombre, float metros_cuadrados, int identificador) {
+    public Tienda(String nombre, int metros_cuadrados) {
         this.nombre = nombre;
         this.metros_cuadrados = metros_cuadrados;
-        this.identificador = identificador;
     }
 
     public String getNombre() {
@@ -35,17 +33,8 @@ class Tienda {
         return metros_cuadrados;
     }
 
-    public void setMetros_cuadrados(float metros_cuadrados) {
+    public void setMetros_cuadrados(int metros_cuadrados) {
         this.metros_cuadrados = metros_cuadrados;
     }
-
-    public int getIdentificador() {
-        return identificador;
-    }
-
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
-    }
     
-    
-}
+    }

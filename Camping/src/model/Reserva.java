@@ -21,7 +21,7 @@ public class Reserva {
     
     private float precio_dia, precio_total;
     private Date fecha_entrada, fecha_salida;
-    public Cliente cliente;
+    public ModelCliente cliente;
     
     // Contiene objetos con una parcela y sus tiendas
     protected ArrayList<ParcelasReserva> parcelasReserva = new ArrayList<>();
@@ -29,13 +29,13 @@ public class Reserva {
     /*
         VISTA 1: fecha_entrada, fecha_salida, ArrayList<parcelas>, 
         VISTA 2: ArrayList<ParcelasReserva> // Se agregarian los metros y nombre de cada objeto tienda agregado al objeto ParcelasReserva
-        VISTA 3: Objeto Cliente
+        VISTA 3: Objeto ModelCliente
    
         Crear objeto Reserva
     */
 
 
-    public Reserva(Date fecha_entrada, Date fecha_salida, ArrayList<ParcelasReserva> parcelasReserva, Cliente cliente) {
+    public Reserva(Date fecha_entrada, Date fecha_salida, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) {
         this.parcelasReserva = parcelasReserva;
         this.fecha_entrada = fecha_entrada;
         this.fecha_salida = fecha_salida;
@@ -78,11 +78,11 @@ public class Reserva {
         this.fecha_salida = fecha_salida;
     }
 
-    public Cliente getCliente() {
+    public ModelCliente getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ModelCliente cliente) {
         this.cliente = cliente;
     }
     
@@ -134,7 +134,7 @@ public class Reserva {
             
     /* SERGIO: La he comentado xq no tiene utilidad y las he desplazado abajo
     
-    public  float realizarReserva(Date fecha_ini, Date fecha_sal, Cliente _cliente, ArrayList<Parcelas> parcelas)
+    public  float realizarReserva(Date fecha_ini, Date fecha_sal, ModelCliente _cliente, ArrayList<Parcelas> parcelas)
     {
         float coste_total;
         Reserva reserva = new Reserva( precio_dia, precio_total, fecha_entrada, fecha_salida,cliente); // SERGIO: ¿Donde se usa este objeto creado?
@@ -148,7 +148,7 @@ public class Reserva {
             String apellido, String dni, String telefono, String email)
     {
         float coste_total;
-        Cliente cliente = new Cliente(id,nombre,apellido,dni, telefono, email );
+        ModelCliente cliente = new ModelCliente(id,nombre,apellido,dni, telefono, email );
         Reserva reserva = new Reserva( precio_dia, precio_total, ini, sal,cliente);
         coste_total = calcularPrecioTotal(ini, sal, parcelas);
         

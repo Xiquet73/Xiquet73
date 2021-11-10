@@ -9,26 +9,15 @@ package model;
  *
  * @author nagga
  */
-public class Cliente {
+public class ModelCliente {
     
-    private int identificador;
-    private String nombre, apellido, dni, telefono, correo;
+    private String nombre, dni, telefono, correo;
 
-    public Cliente(int identificador, String nombre, String apellido, String dni, String telefono, String correo) {
-        this.identificador = identificador;
+    public ModelCliente(String nombre, String dni, String telefono, String correo) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.dni = dni;
         this.telefono = telefono;
         this.correo = correo;
-    }
-
-    public int getIdentificador() {
-        return identificador;
-    }
-
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
     }
 
     public String getNombre() {
@@ -37,14 +26,6 @@ public class Cliente {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
     }
 
     public String getDni() {
