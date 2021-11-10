@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import model.Datos;
+import model.Parcela;
+
 /**
  *
  * @author Pablo
@@ -14,10 +19,50 @@ public class Reservas extends javax.swing.JFrame {
     /**
      * Creates new form Reservas
      */
-    public Reservas() {
+    public Datos datos;
+    public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
+    public Parcela parce;
+    public ArrayList<Parcela> noselec = new ArrayList<Parcela>();
+    public ArrayList<Parcela> selec = new ArrayList<Parcela>();
+    
+    public Reservas(Datos datos) {
+        this.datos = datos;
         initComponents();
+        
+        
+        
+        // obtengo todas las parcelas almacenadas en Datos
+        parcelas = this.datos.getParcelas();
+        
+        // recorro todas las parcelas
+        for(int i = 0; i<parcelas.size(); i++){
+            
+            // ¿Esta disponible la parcela? 
+            if(!parcelas.get(i).getReservado()){
+                noselec.add(parcelas.get(i));
+            }
+        }
+        
+        actualizarVista();
+        
+        
     }
 
+    public void actualizarVista(){
+        
+        DefaultListModel modelo = new DefaultListModel();
+        
+        for(int i = 0; i<noselec.size(); i++){
+            
+            if(noselec.get(i) != null){
+                modelo.addElement(noselec.get(i).getIdentificador());
+            }
+
+        }
+        
+        listParcelas.setModel(modelo);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,16 +75,16 @@ public class Reservas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        fecha_ini = new javax.swing.JTextField();
+        fecha_sal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        listParcelas = new javax.swing.JList<>();
+        buttonAdd = new javax.swing.JButton();
+        buttonDel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listParcelasSelect = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -55,13 +100,13 @@ public class Reservas extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("Hasta");
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("01-01-01");
+        fecha_ini.setBackground(new java.awt.Color(102, 102, 102));
+        fecha_ini.setForeground(new java.awt.Color(255, 255, 255));
+        fecha_ini.setText("01-01-01");
 
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("01-01-01");
+        fecha_sal.setBackground(new java.awt.Color(102, 102, 102));
+        fecha_sal.setForeground(new java.awt.Color(255, 255, 255));
+        fecha_sal.setText("01-01-01");
 
         jLabel4.setForeground(new java.awt.Color(255, 153, 0));
         jLabel4.setText("Parcela   Luz   M2   €/día");
@@ -69,36 +114,26 @@ public class Reservas extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("-");
 
-        jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        listParcelas.setBackground(new java.awt.Color(102, 102, 102));
+        listParcelas.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(listParcelas);
 
-        jButton2.setBackground(new java.awt.Color(255, 153, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("-->");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonAdd.setBackground(new java.awt.Color(255, 153, 0));
+        buttonAdd.setForeground(new java.awt.Color(255, 255, 255));
+        buttonAdd.setText("-->");
+        buttonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonAddActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 153, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("<--");
+        buttonDel.setBackground(new java.awt.Color(255, 153, 0));
+        buttonDel.setForeground(new java.awt.Color(255, 255, 255));
+        buttonDel.setText("<--");
 
-        jList2.setBackground(new java.awt.Color(102, 102, 102));
-        jList2.setForeground(new java.awt.Color(255, 255, 255));
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
+        listParcelasSelect.setBackground(new java.awt.Color(102, 102, 102));
+        listParcelasSelect.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setViewportView(listParcelasSelect);
 
         jLabel5.setForeground(new java.awt.Color(255, 153, 0));
         jLabel5.setText("00.00 €/día");
@@ -137,17 +172,17 @@ public class Reservas extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fecha_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2))
+                                .addComponent(fecha_sal))
                             .addComponent(jScrollPane1)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))
+                            .addComponent(buttonDel)
+                            .addComponent(buttonAdd))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -156,8 +191,8 @@ public class Reservas extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
                                 .addGap(22, 22, 22))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -172,8 +207,8 @@ public class Reservas extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha_ini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fecha_sal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addGap(8, 8, 8)
                         .addComponent(jLabel4)
@@ -183,9 +218,9 @@ public class Reservas extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addComponent(jButton2)
+                                .addComponent(buttonAdd)
                                 .addGap(28, 28, 28)
-                                .addComponent(jButton3)))))
+                                .addComponent(buttonDel)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
@@ -210,7 +245,7 @@ public class Reservas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Menu menu = new Menu();
+        Menu menu = new Menu(this.datos);
         this.setVisible(false);
         menu.pack();
         menu.setLocationRelativeTo(null);
@@ -219,70 +254,48 @@ public class Reservas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Tiendas tiendas = new Tiendas();
+        
+        
+        Tiendas tiendas = new Tiendas(fecha_ini.getText(), fecha_sal.getText());
         this.setVisible(false);
         tiendas.pack();
         tiendas.setLocationRelativeTo(null);
         tiendas.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         // TODO add your handling code here:
         //Al apretar este botón se tendra que actualizar el precio total.
-    }//GEN-LAST:event_jButton2ActionPerformed
+        int val;
+        // obtengo el elemento seleccionado en el listParcelas
+        val = listParcelas.getSelectedIndex();
+        System.out.println("El indice: "+val);
+        // lo quito de listParcelas
+        // lo agrego a listParcelasSelect
+        
+    }//GEN-LAST:event_buttonAddActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Reservas().setVisible(true);
-            }
-        });
-    }
+    
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAdd;
+    private javax.swing.JButton buttonDel;
+    private javax.swing.JTextField fecha_ini;
+    private javax.swing.JTextField fecha_sal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<String> listParcelas;
+    private javax.swing.JList<String> listParcelasSelect;
     // End of variables declaration//GEN-END:variables
 
 }

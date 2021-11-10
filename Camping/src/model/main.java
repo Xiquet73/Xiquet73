@@ -6,6 +6,7 @@
 package model;
 
 import view.Menu;
+import model.Datos;
 
 /**
  *
@@ -42,7 +43,8 @@ public class main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Menu menu = new Menu();
+                Datos datos = new Datos();
+                Menu menu = new Menu(datos);
                 menu.pack();
                 menu.setLocationRelativeTo(null);
                 menu.setVisible(true);

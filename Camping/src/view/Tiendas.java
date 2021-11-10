@@ -15,7 +15,7 @@ public class Tiendas extends javax.swing.JFrame {
     /**
      * Creates new form Tiendas
      */
-    public Tiendas() {
+    public Tiendas(String fecha_ini, String fecha_sal) {
         initComponents();
     }
 
@@ -194,11 +194,13 @@ public class Tiendas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        /*
         Reservas reservas = new Reservas();
         this.setVisible(false);
         reservas.pack();
         reservas.setLocationRelativeTo(null);
         reservas.setVisible(true);
+        */
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -231,7 +233,7 @@ public class Tiendas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tiendas().setVisible(true);
+                //new Tiendas().setVisible(true);
             }
         });
     }

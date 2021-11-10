@@ -13,18 +13,18 @@ import java.util.ArrayList;
  */
 public class ParcelasReserva {
  
-    private Parcelas parcela;
+    private Parcela parcela;
     private ArrayList<Tiendas> tiendas = new ArrayList<>();
 
-    public ParcelasReserva(Parcelas parcela) {
+    public ParcelasReserva(Parcela parcela) {
         this.parcela = parcela;
     }
 
-    public Parcelas getParcela() {
+    public Parcela getParcela() {
         return parcela;
     }
 
-    public void setParcela(Parcelas parcela) {
+    public void setParcela(Parcela parcela) {
         this.parcela = parcela;
     }
 
