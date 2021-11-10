@@ -5,6 +5,11 @@
  */
 package view;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import model.Datos;
+import model.Parcela;
+
 
 /**
  *
@@ -15,9 +20,30 @@ public class Tiendas extends javax.swing.JFrame {
     /**
      * Creates new form Tiendas
      */
-    public Tiendas(String fecha_ini, String fecha_sal) {
+    
+    public Datos datos;
+    public DefaultListModel modeloDer;
+    public ArrayList<Parcela> parcelasSelect = new ArrayList<Parcela>();
+    
+    public Tiendas(Datos datos, String fecha_ini, String fecha_sal, DefaultListModel modeloDer) {
+        this.datos = datos;
+        this.modeloDer = modeloDer;
         initComponents();
+
+        
+        for(int i = 0; i<modeloDer.size(); i++){
+            //comboParcelas.addItem(modeloDer.get(i).toString());
+            for(int z = 0; z < datos.getParcelas().size(); z++){
+                
+                if(modeloDer.get(i).equals(datos.getParcelas().get(z))){
+                    parcelasSelect.add(datos.getParcelas().get(z));
+                }
+            }
+        }
+        
+        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +57,7 @@ public class Tiendas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboParcelas = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -51,12 +77,11 @@ public class Tiendas extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
         jLabel2.setText("Parcela:");
 
-        jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Parcela 1", "Parcela 2", "Parcela 3", "Parcela 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboParcelas.setBackground(new java.awt.Color(102, 102, 102));
+        comboParcelas.setForeground(new java.awt.Color(255, 255, 255));
+        comboParcelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboParcelasActionPerformed(evt);
             }
         });
 
@@ -125,7 +150,7 @@ public class Tiendas extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -147,11 +172,11 @@ public class Tiendas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
-                .addGap(57, 57, 57)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
@@ -176,20 +201,30 @@ public class Tiendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParcelasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboParcelasActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        // obtener la parcela seleccionada en el comboBox
+        // comprobar 
+        
+        /*
         Cliente cliente = new Cliente();
         this.setVisible(false);
         cliente.pack();
         cliente.setLocationRelativeTo(null);
         cliente.setVisible(true);
+        */
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -239,10 +274,10 @@ public class Tiendas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboParcelas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

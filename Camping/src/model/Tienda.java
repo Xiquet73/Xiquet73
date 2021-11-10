@@ -9,7 +9,7 @@ package model;
  *
  * @author Pablo
  */
-class Tiendas {
+class Tienda {
     
     private String nombre;
     private float metros_cuadrados;
@@ -17,7 +17,7 @@ class Tiendas {
 
 
     
-    public Tiendas(String nombre, float metros_cuadrados, int identificador) {
+    public Tienda(String nombre, float metros_cuadrados, int identificador) {
         this.nombre = nombre;
         this.metros_cuadrados = metros_cuadrados;
         this.identificador = identificador;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ParcelasReserva {
  
     private Parcela parcela;
-    private ArrayList<Tiendas> tiendas = new ArrayList<>();
+    private ArrayList<Tienda> tiendas = new ArrayList<>();
 
     public ParcelasReserva(Parcela parcela) {
         this.parcela = parcela;
@@ -28,11 +28,11 @@ public class ParcelasReserva {
         this.parcela = parcela;
     }
 
-    public ArrayList<Tiendas> getTiendas() {
+    public ArrayList<Tienda> getTiendas() {
         return tiendas;
     }
 
-    public void setTiendas(ArrayList<Tiendas> tiendas) {
+    public void setTiendas(ArrayList<Tienda> tiendas) {
         this.tiendas = tiendas;
     }
     
