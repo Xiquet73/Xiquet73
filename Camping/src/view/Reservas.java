@@ -22,15 +22,18 @@ public class Reservas extends javax.swing.JFrame {
     public Datos datos;
     public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
     public Parcela parce;
+    
     public ArrayList<Parcela> noselec = new ArrayList<Parcela>();
     public ArrayList<Parcela> selec = new ArrayList<Parcela>();
+    
+    DefaultListModel modeloder = new DefaultListModel();
+    DefaultListModel modeloizq = new DefaultListModel();
+    
     
     public Reservas(Datos datos) {
         this.datos = datos;
         initComponents();
-        
-        
-        
+               
         // obtengo todas las parcelas almacenadas en Datos
         parcelas = this.datos.getParcelas();
         
@@ -45,22 +48,21 @@ public class Reservas extends javax.swing.JFrame {
         
         actualizarVista();
         
-        
     }
 
     public void actualizarVista(){
         
-        DefaultListModel modelo = new DefaultListModel();
+        
         
         for(int i = 0; i<noselec.size(); i++){
             
             if(noselec.get(i) != null){
-                modelo.addElement(noselec.get(i).getIdentificador());
+                modeloder.addElement(noselec.get(i).getIdentificador());
             }
-
         }
         
-        listParcelas.setModel(modelo);
+        listParcelas.setModel(modeloder);
+        listParcelasSelect.setModel(modeloizq);
     }
     
     /**
@@ -86,7 +88,7 @@ public class Reservas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listParcelasSelect = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        buttonReserva = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,6 +132,11 @@ public class Reservas extends javax.swing.JFrame {
         buttonDel.setBackground(new java.awt.Color(255, 153, 0));
         buttonDel.setForeground(new java.awt.Color(255, 255, 255));
         buttonDel.setText("<--");
+        buttonDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDelActionPerformed(evt);
+            }
+        });
 
         listParcelasSelect.setBackground(new java.awt.Color(102, 102, 102));
         listParcelasSelect.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,11 +146,11 @@ public class Reservas extends javax.swing.JFrame {
         jLabel5.setText("00.00 €/día");
         jLabel5.setAlignmentX(0.5F);
 
-        jButton4.setBackground(new java.awt.Color(255, 153, 0));
-        jButton4.setText("Reserva");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonReserva.setBackground(new java.awt.Color(255, 153, 0));
+        buttonReserva.setText("Reserva");
+        buttonReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonReservaActionPerformed(evt);
             }
         });
 
@@ -192,7 +199,7 @@ public class Reservas extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                                    .addComponent(buttonReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
                                 .addGap(22, 22, 22))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -226,7 +233,7 @@ public class Reservas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(buttonReserva))
                 .addGap(20, 20, 20))
         );
 
@@ -253,7 +260,7 @@ public class Reservas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buttonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReservaActionPerformed
         
         
         Tiendas tiendas = new Tiendas(fecha_ini.getText(), fecha_sal.getText());
@@ -261,19 +268,30 @@ public class Reservas extends javax.swing.JFrame {
         tiendas.pack();
         tiendas.setLocationRelativeTo(null);
         tiendas.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buttonReservaActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         // TODO add your handling code here:
         //Al apretar este botón se tendra que actualizar el precio total.
+        
         int val;
-        // obtengo el elemento seleccionado en el listParcelas
         val = listParcelas.getSelectedIndex();
-        System.out.println("El indice: "+val);
-        // lo quito de listParcelas
-        // lo agrego a listParcelasSelect
+        
+        String id = modeloder.getElementAt(val).toString();
+        modeloder.remove(val);
+        modeloizq.addElement(id);
+      
         
     }//GEN-LAST:event_buttonAddActionPerformed
+
+    private void buttonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDelActionPerformed
+        // TODO add your handling code here:
+        int val;
+        val = listParcelasSelect.getSelectedIndex();
+        String id = modeloizq.getElementAt(val).toString();
+        modeloizq.remove(val);
+        modeloder.addElement(id);
+    }//GEN-LAST:event_buttonDelActionPerformed
 
 
     
@@ -282,10 +300,10 @@ public class Reservas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonDel;
+    private javax.swing.JButton buttonReserva;
     private javax.swing.JTextField fecha_ini;
     private javax.swing.JTextField fecha_sal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

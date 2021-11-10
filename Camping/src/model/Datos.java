@@ -22,10 +22,10 @@ public class Datos {
         
         // Creamos unas parcelas iniciales
         Parcela parcela1 = new Parcela(101, 10, 0, false, 100, true);
-        Parcela parcela2 = new Parcela(130, 30, 0, false, 250, true);
-        Parcela parcela3 = new Parcela(207, 20, 0, false, 80, true);
-        Parcela parcela4 = new Parcela(401, 5, 0, false, 20, true);
-        Parcela parcela5 = new Parcela(206, 12, 0, false, 10, true);
+        Parcela parcela2 = new Parcela(102, 30, 0, false, 250, true);
+        Parcela parcela3 = new Parcela(103, 20, 0, false, 80, true);
+        Parcela parcela4 = new Parcela(104, 5, 0, false, 20, true);
+        Parcela parcela5 = new Parcela(105, 12, 0, false, 10, true);
         
         
         // Añadimos las parcelas al Array

@@ -15,6 +15,8 @@ class Tiendas {
     private float metros_cuadrados;
     private int identificador;
 
+
+    
     public Tiendas(String nombre, float metros_cuadrados, int identificador) {
         this.nombre = nombre;
         this.metros_cuadrados = metros_cuadrados;
