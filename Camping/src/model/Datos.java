@@ -15,7 +15,8 @@ import java.util.Date;
 public class Datos {
     
     
-    public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();  
+    public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
+    public ArrayList<ModelCliente> clientes = new ArrayList<ModelCliente>();
 
     public Datos() {
         
@@ -44,7 +45,14 @@ public class Datos {
     public void setParcelas(ArrayList<Parcela> parcelas) {
         this.parcelas = parcelas;
     }
-    
+
+    public ArrayList<ModelCliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(ArrayList<ModelCliente> clientes) {
+        this.clientes = clientes;
+    }
 }
 
 
