@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import model.Datos;
 import model.ModelCliente;
 import model.ParcelasReserva;
-import model.Reserva;
+import model.ModelReserva;
 
 /**
  *
@@ -20,7 +20,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     
     public ModelCliente cliente;
     public ArrayList<ParcelasReserva> parcelareserva = new ArrayList<ParcelasReserva>();
-    public Reserva reserva;
+    public ModelReserva reserva;
     public String fecha_ini, fecha_sal;
     public Datos datos;
 
@@ -32,7 +32,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal, Datos datos) throws ParseException {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
-        reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente, false);
+        reserva = new ModelReserva(fecha_ini, fecha_sal, parcelareserva, cliente, false);
         String tot = Float.toString(reserva.getPrecio_total());
         this.datos = datos;
         

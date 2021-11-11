@@ -15,18 +15,18 @@ import java.util.Date;
 public class Datos {
     
     
-    public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
-    public ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+    public ArrayList<ModelParcela> parcelas = new ArrayList<ModelParcela>();
+    public ArrayList<ModelReserva> reservas = new ArrayList<ModelReserva>();
 
     public Datos() {
         
         
         // Creamos unas parcelas iniciales
-        Parcela parcela1 = new Parcela(101, 10, 0, false, 100, true);
-        Parcela parcela2 = new Parcela(102, 30, 0, false, 250, true);
-        Parcela parcela3 = new Parcela(103, 20, 0, false, 80, true);
-        Parcela parcela4 = new Parcela(104, 5, 0, false, 20, true);
-        Parcela parcela5 = new Parcela(105, 12, 0, false, 10, true);
+        ModelParcela parcela1 = new ModelParcela(101, 10, 0, false, 100, true);
+        ModelParcela parcela2 = new ModelParcela(102, 30, 0, false, 250, true);
+        ModelParcela parcela3 = new ModelParcela(103, 20, 0, false, 80, true);
+        ModelParcela parcela4 = new ModelParcela(104, 5, 0, false, 20, true);
+        ModelParcela parcela5 = new ModelParcela(105, 12, 0, false, 10, true);
         
         
         // Añadimos las parcelas al Array
@@ -38,19 +38,19 @@ public class Datos {
         
     }
 
-    public ArrayList<Parcela> getParcelas() {
+    public ArrayList<ModelParcela> getParcelas() {
         return parcelas;
     }
 
-    public void setParcelas(ArrayList<Parcela> parcelas) {
+    public void setParcelas(ArrayList<ModelParcela> parcelas) {
         this.parcelas = parcelas;
     }
 
-    public ArrayList<Reserva> getReserva() {
+    public ArrayList<ModelReserva> getReserva() {
         return reservas;
     }
 
-    public void addReserva(Reserva reserva){
+    public void addReserva(ModelReserva reserva){
         reservas.add(reserva);
         
     }

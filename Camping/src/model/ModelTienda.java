@@ -9,14 +9,14 @@ package model;
  *
  * @author Pablo
  */
-public class Tienda{
+public class ModelTienda{
     
     private String nombre;
     private int metros_cuadrados;
 
 
     
-    public Tienda(String nombre, int metros_cuadrados) {
+    public ModelTienda(String nombre, int metros_cuadrados) {
         this.nombre = nombre;
         this.metros_cuadrados = metros_cuadrados;
     }

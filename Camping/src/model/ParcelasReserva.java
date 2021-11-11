@@ -13,30 +13,30 @@ import java.util.ArrayList;
  */
 public class ParcelasReserva {
  
-    private Parcela parcela;
-    private ArrayList<Tienda> tiendas = new ArrayList<>();
+    private ModelParcela parcela;
+    private ArrayList<ModelTienda> tiendas = new ArrayList<>();
 
-    public ParcelasReserva(Parcela parcela) {
+    public ParcelasReserva(ModelParcela parcela) {
         this.parcela = parcela;
     }
 
-    public Parcela getParcela() {
+    public ModelParcela getParcela() {
         return parcela;
     }
 
-    public void setParcela(Parcela parcela) {
+    public void setParcela(ModelParcela parcela) {
         this.parcela = parcela;
     }
 
-    public ArrayList<Tienda> getTiendas() {
+    public ArrayList<ModelTienda> getTiendas() {
         return tiendas;
     }
 
-    public void setTiendas(ArrayList<Tienda> tiendas) {
+    public void setTiendas(ArrayList<ModelTienda> tiendas) {
         this.tiendas = tiendas;
     }
     
-    public void anayadirTiendas(Tienda tienda)
+    public void anayadirTiendas(ModelTienda tienda)
     {
         this.tiendas.add(tienda);
     }

@@ -8,7 +8,7 @@ package view;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import model.Datos;
-import model.Parcela;
+import model.ModelParcela;
 
 /**
  *
@@ -20,11 +20,11 @@ public class Reservas extends javax.swing.JFrame {
      * Creates new form Reservas
      */
     public Datos datos;
-    public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
-    public Parcela parce;
+    public ArrayList<ModelParcela> parcelas = new ArrayList<ModelParcela>();
+    public ModelParcela parce;
     
-    public ArrayList<Parcela> noselec = new ArrayList<Parcela>();
-    public ArrayList<Parcela> selec = new ArrayList<Parcela>();
+    public ArrayList<ModelParcela> noselec = new ArrayList<ModelParcela>();
+    public ArrayList<ModelParcela> selec = new ArrayList<ModelParcela>();
     
     DefaultListModel modeloder = new DefaultListModel();
     DefaultListModel modeloizq = new DefaultListModel();

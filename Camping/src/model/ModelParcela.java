@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author nagga
  */
-public class Parcela {
+public class ModelParcela {
     
     private int identificador;
     private float tamanyo;
@@ -20,7 +20,7 @@ public class Parcela {
 
     private float precio;
 
-    public Parcela(int identificador, float tamanyo, float descuento, boolean reservado, float precio, boolean electricidad) {
+    public ModelParcela(int identificador, float tamanyo, float descuento, boolean reservado, float precio, boolean electricidad) {
         this.identificador = identificador;
         this.tamanyo = tamanyo;
         this.descuento = descuento;

@@ -20,7 +20,7 @@ import java.util.Locale;
  * @author nagga
  */
 
-public class Reserva { 
+public class ModelReserva { 
     
     public static final float CONVERSION_MS_DIAS = 86400000;
 
@@ -56,7 +56,7 @@ public class Reserva {
     */
 
 
-    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente, Boolean estancia) throws ParseException {
+    public ModelReserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente, Boolean estancia) throws ParseException {
         
         this.estancia = false;
  
@@ -124,10 +124,10 @@ public class Reserva {
     }
     
     
-    public ArrayList parcelasDisponibles(Date entrada, Date salida, ArrayList<Parcela> parcelas){
-        ArrayList<Parcela> parcelasLibres = new ArrayList<>();
+    public ArrayList parcelasDisponibles(Date entrada, Date salida, ArrayList<ModelParcela> parcelas){
+        ArrayList<ModelParcela> parcelasLibres = new ArrayList<>();
         boolean disponible;
-        Parcela _parcelas;
+        ModelParcela _parcelas;
         
         
         for (int i=0; i < parcelas.size(); i++){

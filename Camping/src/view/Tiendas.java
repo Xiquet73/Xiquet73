@@ -8,9 +8,9 @@ package view;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import model.Datos;
-import model.Parcela;
+import model.ModelParcela;
 import model.ParcelasReserva;
-import model.Tienda;
+import model.ModelTienda;
 
 
 /**
@@ -27,7 +27,7 @@ public class Tiendas extends javax.swing.JFrame {
     public String fecha_ini, fecha_sal;
     public DefaultListModel modeloDer;
     public DefaultListModel modeloListaTiendas = new DefaultListModel();
-    public ArrayList<Parcela> parcelasSelect = new ArrayList<Parcela>();
+    public ArrayList<ModelParcela> parcelasSelect = new ArrayList<ModelParcela>();
     public ArrayList<ParcelasReserva> parcelastiendas = new ArrayList<ParcelasReserva>();
     
     public Tiendas(Datos datos, String fecha_ini, String fecha_sal, DefaultListModel modeloDer) {
@@ -218,7 +218,7 @@ public class Tiendas extends javax.swing.JFrame {
         
         modeloListaTiendas.clear();
         int metros = Integer.parseInt(Metros.getText());
-         Tienda tiendas = new Tienda(Nombre.getText(), metros);
+         ModelTienda tiendas = new ModelTienda(Nombre.getText(), metros);
          String id = comboParcelas.getSelectedItem().toString();
          int idd = Integer.parseInt(id);
          for (int i = 0; i < parcelastiendas.size(); i++)
