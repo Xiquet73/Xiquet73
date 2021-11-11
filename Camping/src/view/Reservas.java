@@ -97,18 +97,16 @@ public class Reservas extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel2.setText("Desde");
+        jLabel2.setText("Desde dd/mm/yy");
 
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("Hasta");
 
         fecha_ini.setBackground(new java.awt.Color(102, 102, 102));
         fecha_ini.setForeground(new java.awt.Color(255, 255, 255));
-        fecha_ini.setText("01-01-01");
 
         fecha_sal.setBackground(new java.awt.Color(102, 102, 102));
         fecha_sal.setForeground(new java.awt.Color(255, 255, 255));
-        fecha_sal.setText("01-01-01");
 
         jLabel4.setForeground(new java.awt.Color(255, 153, 0));
         jLabel4.setText("Parcela   Luz   M2   €/día");
@@ -171,8 +169,8 @@ public class Reservas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()

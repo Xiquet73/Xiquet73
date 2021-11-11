@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class Reserva { 
     
-    public static final long CONVERSION_MS_DIAS = 86400000;
+    public static final float CONVERSION_MS_DIAS = 86400000;
     
     private float precio_dia, precio_total;
     private Date fecha_entrada, fecha_salida;
@@ -44,14 +44,8 @@ public class Reserva {
         
         
  
-        this.fecha_entrada = new SimpleDateFormat("DD-MM-YY").parse(f_ent);  
-        this.fecha_salida = new SimpleDateFormat("DD-MM-YY").parse(f_sal); 
-        
-      
-
-        
-        
-
+        this.fecha_entrada = new SimpleDateFormat("DD/MM/YY").parse(f_ent);  
+        this.fecha_salida = new SimpleDateFormat("DD/MM/YY").parse(f_sal); 
         this.parcelasReserva = parcelasReserva;
         this.cliente = cliente;
         calcularPrecioTotal(this.fecha_entrada, this.fecha_salida, parcelasReserva);
@@ -107,10 +101,10 @@ public class Reserva {
         
         for (int i=0; i < parcelasReserva.size(); i++){
             precio_dia += parcelasReserva.get(i).getParcela().getPrecio();
-            precio_total= precio_dia * ((fecha_sal.getTime() - fecha_ini.getTime())) / CONVERSION_MS_DIAS;
         }
-        
+       precio_total= precio_dia * ((fecha_sal.getTime() - fecha_ini.getTime())) / CONVERSION_MS_DIAS;
             this.precio_total = precio_total;
+            System.out.println("precio total: " +precio_total);
             return precio_total;
     }
     

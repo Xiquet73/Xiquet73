@@ -34,6 +34,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
         String tot = Float.toString(reserva.getPrecio_total());
         
         initComponents();
+        System.out.println(tot);
         txtPrecio.setText(tot);
     }
 
