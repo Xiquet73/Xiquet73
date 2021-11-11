@@ -23,7 +23,6 @@ import model.Datos;
  * @author Raga Casan, Ignacio 
  * @author Sanchez Monreal, Benjamin
  * @version 1.0 11/11/2021
- * 
  *****************************************************************************/
 public class main {
     /**
