@@ -27,7 +27,7 @@ public class Reserva {
     private float precio_dia, precio_total;
     private Date fecha_entrada, fecha_salida;
     public ModelCliente cliente;
-    
+    public Boolean estancia;
     // Contiene objetos con una parcela y sus tiendas
     protected ArrayList<ParcelasReserva> parcelasReserva = new ArrayList<>();
 
@@ -40,9 +40,9 @@ public class Reserva {
     */
 
 
-    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) throws ParseException {
+    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente, Boolean estancia) throws ParseException {
         
-        
+        this.estancia = false;
  
         this.fecha_entrada = new SimpleDateFormat("dd/MM/yy").parse(f_ent);  
         this.fecha_salida = new SimpleDateFormat("dd/MM/yy").parse(f_sal);
