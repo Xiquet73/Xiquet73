@@ -17,7 +17,8 @@ import java.util.Locale;
 
 /**
  *
- * @author nagga
+ * @author Raga Casan, Ignacio 
+ * @version 1.0
  */
 
 public class ModelReserva { 

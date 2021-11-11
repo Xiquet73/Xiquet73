@@ -7,7 +7,8 @@ package model;
 
 /**
  *
- * @author Pablo
+ * @author Heras Labrada, Pablo
+ * @version 1.0 
  */
 class TipoActividad {
     

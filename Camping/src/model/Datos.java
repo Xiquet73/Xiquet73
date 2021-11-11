@@ -10,7 +10,8 @@ import java.util.Date;
 
 /**
  *
- * @author Freedan
+ * @author Nuñez Tomas, Sergio 
+ * @version 1.0
  */
 public class Datos {
     
