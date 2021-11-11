@@ -8,10 +8,22 @@ package model;
 import view.Menu;
 import model.Datos;
 
-/**
- *
- * @author nagga
- */
+/******************************************************************************
+ *  IS2_L1_Pactica2-3-4_CampingParty
+ *  Se realizara una aplicacion para gestionar diversas funciones de un
+ *  camping como gestionar reservas, clientes, historicos entre otros.
+ * 
+ *  Direccion URL del repositorio: https://github.com/Xiquet73/Xiquet73
+ * 
+ * @author L1_CampingParty_G2
+ * @author Callejo, Miguel Angel
+ * @author Heras Labrada, Pablo
+ * @author Nuñez, Sergio 
+ * @author Pacheco Garcia, Jose Miguel
+ * @author Raga Casan, Ignacio 
+ * @author Sanchez Monreal, Benjamin
+ * @version 1.0 11/11/2021
+ *****************************************************************************/
 public class main {
     /**
      * @param args the command line arguments
