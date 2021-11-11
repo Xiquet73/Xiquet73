@@ -12,11 +12,19 @@ package model;
 */
 public class Gerente {
     
-    private String nomg, apeg, dnig, dirg, locg, corg;
-    private int tfnog;
+    private String nomg, apeg, dnig, dirg, locg, corg, tfnog;
     
-    public Gerente(String nomg, String apeg, String dnig, String dirg, String locg, String corg, int tfnog) {
-    
+    /**
+     * Constructor de gerente
+     * @param nomg
+     * @param apeg
+     * @param dnig
+     * @param dirg
+     * @param locg
+     * @param corg
+     * @param tfnog 
+     */
+    public Gerente(String nomg, String apeg, String dnig, String dirg, String locg, String corg, String tfnog) {
         this.nomg = nomg;
         this.apeg = apeg;
         this.dnig = dnig;
@@ -26,64 +34,121 @@ public class Gerente {
         this.tfnog = tfnog;
     }
     
-    public String getNombreG() {
+    /**
+     * Devuelve el nombre del gerente
+     * @return nomg
+     */
+    public String getNombre() {
         return nomg;
         }
-    
-    public void setNombreG(String ng) {
+        
+    /**
+     * Asigna el nombre del gerente
+     * @param ng 
+     */
+    public void setNombre(String ng) {
         this.nomg = ng;
         }
-
-    public String getApellidosG() {
+    /**
+     * Devuelve el apellido del gerente
+     * @return apeg
+     */
+    public String getApellidos() {
         return apeg;
         }
-
-    public void setApellidosG(String ag) {
+    /**
+     * Asigna el apellido del gerente
+     * @param ag 
+     */
+    public void setApellidos(String ag) {
         this.apeg = ag;
         }
     
-    public String getDniG() {
+     /**
+     * Devuelve el DNI del gerente
+     * @return dnig
+     */
+    public String getDni() {
         return dnig;
-        }
-    
-    public void setDniG(String d) {
+     }
+     
+    /**
+     * Asigna el Dni del gerente
+     * @param d 
+     */
+    public void setDni(String d) {
         this.dnig = d;
-        }
+    }
     
-    public String getDireccionG() {
+     /**
+     * Devuelve la direccion del gerente
+     * @return dirg
+     */
+    public String getDireccion() {
         return dirg;
-        }
+    }
     
+     /**
+     * Asigna la direccion del gerente
+     * @param dg 
+     */
     public void setDireccionG(String dg) {
         this.dirg = dg;
         }
     
-    public String getLocalidadG() {
+     /**
+     * Devuelve el locg del gerente
+     * @return locg
+     */
+    public String getLocalidad() {
         return locg;
         }
     
-    public void setLocalidadG(String lg) {
+     /**
+     * Asigna la localizacion del gerente
+     * @param lg 
+     */
+    public void setLocalidad(String lg) {
         this.locg = lg;
-        }
-    
-    public String getCorreoG() {
+    }
+     
+    /**
+     * Devuelve el correo del gerente
+     * @return corg
+     */
+    public String getCorreo() {
         return corg;
-        }
+    }
 
-    public void setCorreoG(String cg) {
+     /**
+     * Asigna el correo del gerente
+     * @param cg
+     */
+    public void setCorreo(String cg) {
         this.corg = cg;
-        }
+    }
 
-    public int getTfnoG() {
+    /**
+     * Devuelve el telefono del gerente
+     * @return tfnog
+     */
+    public String getTelefono() {
         return tfnog;
         }
 
-    public void setTfnoG(int tg) {
+     /**
+     * Asigna el telefono del gerente
+     * @param tg
+     */
+    public void setTelefono(String tg) {
         this.tfnog = tg;
         }
     
+    // Metodo sobreescrito toString para mostrar todos lso datos del cliente
     @Override
     public String toString() {
-        return "Nombre: "+nomg+" Apellidos: "+apeg+" DNI: "+dnig+" Direccion: "+dirg+" Localidad: "+locg+" Correo electronico: "+corg+" Telefono"+tfnog;
+        return "Nombre: " + nomg + " Apellidos: " + apeg + 
+               " DNI: " + dnig + " Direccion: " + dirg + " Localidad: " + locg + 
+               " Correo electronico: " + corg + " Telefono" + tfnog;
         }
 }
