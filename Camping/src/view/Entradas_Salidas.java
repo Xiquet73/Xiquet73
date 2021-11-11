@@ -18,6 +18,15 @@ public Datos datos;
      * Creates new form Entradas_Salidas
      */
     public Entradas_Salidas(Datos datos) {
+        
+        this.datos = datos;
+        
+        for(int i = 0; i<datos.getReserva().size(); i++){
+            if(!datos.getReserva().get(i).getEstancia()){
+                comboClientes.addItem(datos.getReserva().get(i).getCliente().getNombre());
+            }
+        }
+        
         initComponents();
     }
 
@@ -31,7 +40,7 @@ public Datos datos;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboClientes = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -44,9 +53,8 @@ public Datos datos;
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
-        jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Item 2", "Item 3", "Item 4" }));
+        comboClientes.setBackground(new java.awt.Color(102, 102, 102));
+        comboClientes.setForeground(new java.awt.Color(255, 255, 255));
 
         jTextField1.setBackground(new java.awt.Color(102, 102, 102));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
@@ -102,14 +110,14 @@ public Datos datos;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,9 +157,9 @@ public Datos datos;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboClientes;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
