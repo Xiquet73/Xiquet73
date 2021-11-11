@@ -26,7 +26,7 @@ public Datos datos;
         //Bucle con el que recuperaremos los clientes que tengan una reserva con el valor estancia a true para saber que estan en el camping
         for(int i = 0; i < datos.getReserva().size();i++)
         {
-            if(datos.getReserva().get(i).getEstancia().equals(false))
+            if(datos.getReserva().get(i).getEstancia().equals(true))
             {
                 comboCliente.addItem(datos.getReserva().get(i).getCliente().getNombre());         
             }
