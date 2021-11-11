@@ -20,6 +20,14 @@ public Datos datos;
     public Parcelas(Datos datos) {
         this.datos = datos;
         initComponents();
+        int id;
+        for (int i=0; i<datos.getParcelas().size();i++)
+        {
+            id = datos.getParcelas().get(i).getIdentificador();
+            String iden = Integer.toString(id);
+            comboParcela.addItem(iden);
+            
+        }
     }
 
     /**
@@ -33,7 +41,7 @@ public Datos datos;
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboParcela = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -56,9 +64,14 @@ public Datos datos;
         jLabel1.setForeground(new java.awt.Color(204, 153, 0));
         jLabel1.setText("Selecciona una parcela:");
 
-        jComboBox1.setBackground(new java.awt.Color(102, 102, 102));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona...", "Parcela 1", "Parcela 2", "Parcela 3", "Parcela 4" }));
+        comboParcela.setBackground(new java.awt.Color(102, 102, 102));
+        comboParcela.setForeground(new java.awt.Color(255, 255, 255));
+        comboParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona...", "Parcela 1", "Parcela 2", "Parcela 3", "Parcela 4" }));
+        comboParcela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboParcelaActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 153, 0));
         jButton1.setText("Crear Parcela");
@@ -145,7 +158,7 @@ public Datos datos;
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 5, Short.MAX_VALUE)))
@@ -159,7 +172,7 @@ public Datos datos;
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -206,11 +219,16 @@ public Datos datos;
         admin.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void comboParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParcelaActionPerformed
+       
+        
+    }//GEN-LAST:event_comboParcelaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboParcela;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
