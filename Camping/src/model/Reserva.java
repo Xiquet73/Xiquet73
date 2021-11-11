@@ -23,11 +23,27 @@ import java.util.Locale;
 public class Reserva { 
     
     public static final float CONVERSION_MS_DIAS = 86400000;
+
+    public Boolean getEstancia() {
+        return estancia;
+    }
+
+    public void setEstancia(Boolean estancia) {
+        this.estancia = estancia;
+    }
+
+    public ArrayList<ParcelasReserva> getParcelasReserva() {
+        return parcelasReserva;
+    }
+
+    public void setParcelasReserva(ArrayList<ParcelasReserva> parcelasReserva) {
+        this.parcelasReserva = parcelasReserva;
+    }
     
     private float precio_dia, precio_total;
     private Date fecha_entrada, fecha_salida;
     public ModelCliente cliente;
-    
+    public Boolean estancia;
     // Contiene objetos con una parcela y sus tiendas
     protected ArrayList<ParcelasReserva> parcelasReserva = new ArrayList<>();
 
@@ -40,9 +56,9 @@ public class Reserva {
     */
 
 
-    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente) throws ParseException {
+    public Reserva(String f_ent, String f_sal, ArrayList<ParcelasReserva> parcelasReserva, ModelCliente cliente, Boolean estancia) throws ParseException {
         
-        
+        this.estancia = false;
  
         this.fecha_entrada = new SimpleDateFormat("dd/MM/yy").parse(f_ent);  
         this.fecha_salida = new SimpleDateFormat("dd/MM/yy").parse(f_sal);

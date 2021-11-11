@@ -32,7 +32,7 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal, Datos datos) throws ParseException {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
-        reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente);
+        reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente, false);
         String tot = Float.toString(reserva.getPrecio_total());
         this.datos = datos;
         
