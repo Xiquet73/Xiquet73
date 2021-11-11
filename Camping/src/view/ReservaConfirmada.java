@@ -33,11 +33,10 @@ public class ReservaConfirmada extends javax.swing.JFrame {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
         reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente);
-        
-        
-        
         String tot = Float.toString(reserva.getPrecio_total());
         this.datos = datos;
+        
+        datos.addReserva(reserva);
         
         initComponents();
         txtPrecio.setText(tot);

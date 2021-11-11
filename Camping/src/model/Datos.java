@@ -46,13 +46,14 @@ public class Datos {
         this.parcelas = parcelas;
     }
 
-    public ArrayList<Reserva> getClientes() {
+    public ArrayList<Reserva> getReserva() {
         return reservas;
     }
 
-    public void setClientes(ArrayList<Reserva> clientes) {
-        this.reservas = clientes;
+    public void addReserva(Reserva reserva){
+        reservas.add(reserva);
     }
+    
 
 
 }
