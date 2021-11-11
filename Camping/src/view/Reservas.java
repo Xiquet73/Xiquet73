@@ -259,8 +259,6 @@ public class Reservas extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void buttonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReservaActionPerformed
-        
-        
         Tiendas tiendas = new Tiendas(datos, fecha_ini.getText(), fecha_sal.getText(), modeloizq);
         this.setVisible(false);
         tiendas.pack();

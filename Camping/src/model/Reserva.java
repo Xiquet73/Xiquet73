@@ -44,8 +44,8 @@ public class Reserva {
         
         
  
-        this.fecha_entrada = new SimpleDateFormat("DD/MM/YY").parse(f_ent);  
-        this.fecha_salida = new SimpleDateFormat("DD/MM/YY").parse(f_sal); 
+        this.fecha_entrada = new SimpleDateFormat("dd/MM/yy").parse(f_ent);  
+        this.fecha_salida = new SimpleDateFormat("dd/MM/yy").parse(f_sal);
         this.parcelasReserva = parcelasReserva;
         this.cliente = cliente;
         calcularPrecioTotal(this.fecha_entrada, this.fecha_salida, parcelasReserva);

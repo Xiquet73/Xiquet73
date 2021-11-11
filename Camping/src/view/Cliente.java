@@ -5,7 +5,10 @@
  */
 package view;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Datos;
 import model.ModelCliente;
 import model.ParcelasReserva;
@@ -21,11 +24,13 @@ public class Cliente extends javax.swing.JFrame {
      */
     public ArrayList<ParcelasReserva> parcelastiendas;
     public String fecha_ini, fecha_sal;
+    public Datos datos;
     
-    public Cliente(ArrayList<ParcelasReserva> parcelastiendas, String fecha_ini, String fecha_sal) {
+    public Cliente(ArrayList<ParcelasReserva> parcelastiendas, String fecha_ini, String fecha_sal, Datos datos) {
         this.parcelastiendas = parcelastiendas;
         this.fecha_ini = fecha_ini;
         this.fecha_sal = fecha_sal;
+        this.datos = datos;
         
         
         initComponents();
@@ -189,7 +194,12 @@ public class Cliente extends javax.swing.JFrame {
         
         
         ModelCliente cliente = new ModelCliente(txtNombre.getText(), txtDni.getText(), txtTelefono.getText(), txtCorreo.getText());
-        ReservaConfirmada reserva = new ReservaConfirmada(cliente, parcelastiendas, fecha_ini, fecha_sal);
+        ReservaConfirmada reserva = null;
+        try {
+            reserva = new ReservaConfirmada(cliente, parcelastiendas, fecha_ini, fecha_sal, datos);
+        } catch (ParseException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setVisible(false);
         reserva.pack();
         reserva.setLocationRelativeTo(null);

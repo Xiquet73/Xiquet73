@@ -7,6 +7,7 @@ package view;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import model.Datos;
 import model.ModelCliente;
 import model.ParcelasReserva;
 import model.Reserva;
@@ -21,20 +22,21 @@ public class ReservaConfirmada extends javax.swing.JFrame {
     public ArrayList<ParcelasReserva> parcelareserva = new ArrayList<ParcelasReserva>();
     public Reserva reserva;
     public String fecha_ini, fecha_sal;
+    public Datos datos;
 
     /**
      * Creates new form ReservaConfirmada
      * @param cliente
      * @param parcelareserva
      */
-    public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal) throws ParseException {
+    public ReservaConfirmada(ModelCliente cliente, ArrayList<ParcelasReserva> parcelareserva, String fecha_ini, String fecha_sal, Datos datos) throws ParseException {
         this.cliente = cliente;
         this.parcelareserva = parcelareserva;
         reserva = new Reserva(fecha_ini, fecha_sal, parcelareserva, cliente);
         String tot = Float.toString(reserva.getPrecio_total());
+        this.datos = datos;
         
         initComponents();
-        System.out.println(tot);
         txtPrecio.setText(tot);
     }
 
@@ -69,7 +71,6 @@ public class ReservaConfirmada extends javax.swing.JFrame {
         txtPrecio.setEditable(false);
         txtPrecio.setBackground(new java.awt.Color(102, 102, 102));
         txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecio.setText("Precio total");
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
@@ -138,13 +139,21 @@ public class ReservaConfirmada extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        /*
-        Menu menu = new Menu();
+        for(int i = 0; i < parcelareserva.size(); i++)
+        {
+            for (int j = 0; j < datos.getParcelas().size(); j++)
+            {
+                if(datos.getParcelas().get(j).getIdentificador() == parcelareserva.get(i).getParcela().getIdentificador())
+                    datos.getParcelas().get(j).setReservado(true);
+            }
+        }
+        
+        Menu menu = new Menu(datos);
         this.setVisible(false);
         menu.pack();
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
-        */
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

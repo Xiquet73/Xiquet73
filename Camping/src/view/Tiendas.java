@@ -223,8 +223,6 @@ public class Tiendas extends javax.swing.JFrame {
          int idd = Integer.parseInt(id);
          for (int i = 0; i < parcelastiendas.size(); i++)
          {
-             System.out.println(parcelastiendas.get(i).getParcela().getIdentificador());
-             System.out.println(idd);
              if(parcelastiendas.get(i).getParcela().getIdentificador() == idd)
              {
                  parcelastiendas.get(i).anayadirTiendas(tiendas);
@@ -252,8 +250,7 @@ public class Tiendas extends javax.swing.JFrame {
         // obtener la parcela seleccionada en el comboBox
         // comprobar 
         
-        
-        Cliente cliente = new Cliente(parcelastiendas, fecha_ini, fecha_sal);
+        Cliente cliente = new Cliente(parcelastiendas, fecha_ini, fecha_sal, datos);
         this.setVisible(false);
         cliente.pack();
         cliente.setLocationRelativeTo(null);
