@@ -26,7 +26,10 @@ public Datos datos;
         //Bucle con el que recuperaremos los clientes que tengan una reserva con el valor estancia a true para saber que estan en el camping
         for(int i = 0; i < datos.getReserva().size();i++)
         {
-            
+            if(datos.getReserva().get(i).getEstancia().equals(false))
+            {
+                comboCliente.addItem(datos.getReserva().get(i).getCliente().getNombre());                
+            } 
         }
     }
 
@@ -40,7 +43,7 @@ public Datos datos;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Cliente = new javax.swing.JComboBox<>();
+        comboCliente = new javax.swing.JComboBox<>();
         comboActividad = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -56,10 +59,10 @@ public Datos datos;
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
 
-        Cliente.setBackground(new java.awt.Color(102, 102, 102));
-        Cliente.addActionListener(new java.awt.event.ActionListener() {
+        comboCliente.setBackground(new java.awt.Color(102, 102, 102));
+        comboCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteActionPerformed(evt);
+                comboClienteActionPerformed(evt);
             }
         });
 
@@ -112,7 +115,7 @@ public Datos datos;
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(comboActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -128,7 +131,7 @@ public Datos datos;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,14 +175,14 @@ public Datos datos;
         
     }//GEN-LAST:event_comboActividadActionPerformed
 
-    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+    private void comboClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ClienteActionPerformed
+    }//GEN-LAST:event_comboClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Cliente;
     private javax.swing.JComboBox<String> comboActividad;
+    private javax.swing.JComboBox<String> comboCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
