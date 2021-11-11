@@ -23,6 +23,22 @@ import java.util.Locale;
 public class Reserva { 
     
     public static final float CONVERSION_MS_DIAS = 86400000;
+
+    public Boolean getEstancia() {
+        return estancia;
+    }
+
+    public void setEstancia(Boolean estancia) {
+        this.estancia = estancia;
+    }
+
+    public ArrayList<ParcelasReserva> getParcelasReserva() {
+        return parcelasReserva;
+    }
+
+    public void setParcelasReserva(ArrayList<ParcelasReserva> parcelasReserva) {
+        this.parcelasReserva = parcelasReserva;
+    }
     
     private float precio_dia, precio_total;
     private Date fecha_entrada, fecha_salida;

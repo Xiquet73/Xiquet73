@@ -22,6 +22,12 @@ public Datos datos;
         comboActividad.addItem("Frontón");
         comboActividad.addItem("Piscina");
         comboActividad.addItem("Juegos");
+        
+        //Bucle con el que recuperaremos los clientes que tengan una reserva con el valor estancia a true para saber que estan en el camping
+        for(int i = 0; i < datos.getReserva().size();i++)
+        {
+            
+        }
     }
 
     /**
@@ -51,7 +57,11 @@ public Datos datos;
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
 
         Cliente.setBackground(new java.awt.Color(102, 102, 102));
-        Cliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Item 2", "Item 3", "Item 4" }));
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
 
         comboActividad.setBackground(new java.awt.Color(102, 102, 102));
         comboActividad.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +171,10 @@ public Datos datos;
         // TODO add your handling code here:
         
     }//GEN-LAST:event_comboActividadActionPerformed
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
