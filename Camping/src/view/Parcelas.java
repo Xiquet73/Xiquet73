@@ -66,7 +66,6 @@ public Datos datos;
 
         comboParcela.setBackground(new java.awt.Color(102, 102, 102));
         comboParcela.setForeground(new java.awt.Color(255, 255, 255));
-        comboParcela.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona...", "Parcela 1", "Parcela 2", "Parcela 3", "Parcela 4" }));
         comboParcela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboParcelaActionPerformed(evt);
@@ -152,9 +151,9 @@ public Datos datos;
                                         .addComponent(jLabel6)
                                         .addGap(24, 24, 24)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                                     .addComponent(jTextField3)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextField4)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -221,6 +220,13 @@ public Datos datos;
 
     private void comboParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParcelaActionPerformed
        
+        for(int i=0; i<datos.getParcelas().size();i++){
+            int id = datos.getParcelas().get(i).getIdentificador();
+            String iden = Integer.toString(id);
+            if(iden.equals(comboParcela.getSelectedItem())){
+                
+            }
+        }
         
     }//GEN-LAST:event_comboParcelaActionPerformed
 
