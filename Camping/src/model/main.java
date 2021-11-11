@@ -18,7 +18,7 @@ import model.Datos;
  * @author L1_CampingParty_G2
  * @author Callejo, Miguel Angel
  * @author Heras Labrada, Pablo
- * @author Nuñez, Sergio 
+ * @author Nuñez Tomas, Sergio 
  * @author Pacheco Garcia, Jose Miguel
  * @author Raga Casan, Ignacio 
  * @author Sanchez Monreal, Benjamin
@@ -63,5 +63,4 @@ public class main {
             }
         });
     }
-    //Direccion URL del repositorio: https://github.com/Xiquet73/Xiquet73
 }
