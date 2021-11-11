@@ -7,8 +7,9 @@ package model;
 
 /**
  *
- * @author pagarjo
- */
+ * @author Pacheco Garcia, Jose Miguel
+ * @version 1.0
+*/
 public class Gerente {
     
     private String nomg, apeg, dnig, dirg, locg, corg;

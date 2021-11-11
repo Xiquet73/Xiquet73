@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Pablo
+ * @author Heras Labrada, Pablo
+ * @version 1.0 
  */
 public class ParcelasReserva {
  

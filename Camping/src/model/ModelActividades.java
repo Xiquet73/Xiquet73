@@ -10,7 +10,8 @@ import java.util.Date;
 
 /**
  *
- * @author nagga
+ * @author Raga Casan, Ignacio 
+ * @version 1.0
  */
 public class ModelActividades {
     
