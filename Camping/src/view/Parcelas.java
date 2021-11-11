@@ -51,7 +51,7 @@ public Datos datos;
         txtId = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtDescuento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -93,6 +93,11 @@ public Datos datos;
 
         txtId.setBackground(new java.awt.Color(102, 102, 102));
         txtId.setForeground(new java.awt.Color(255, 255, 255));
+        txtId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdActionPerformed(evt);
+            }
+        });
 
         jLabel5.setForeground(new java.awt.Color(204, 153, 0));
         jLabel5.setText("€/dia:");
@@ -100,8 +105,8 @@ public Datos datos;
         txtPrecio.setBackground(new java.awt.Color(102, 102, 102));
         txtPrecio.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTextField4.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        txtDescuento.setBackground(new java.awt.Color(102, 102, 102));
+        txtDescuento.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel6.setForeground(new java.awt.Color(204, 153, 0));
         jLabel6.setText("Descuento por mas de 15 dias:");
@@ -153,7 +158,7 @@ public Datos datos;
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtId)
                                     .addComponent(txtPrecio)
-                                    .addComponent(jTextField4)))
+                                    .addComponent(txtDescuento)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -188,7 +193,7 @@ public Datos datos;
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -227,10 +232,32 @@ public Datos datos;
                 float m = datos.getParcelas().get(i).getTamanyo();
                 String metros = String.valueOf(m);
                 txtMetros.setText(metros);
+                int codigo = datos.getParcelas().get(i).getIdentificador();
+                String c = String.valueOf(codigo);
+                txtId.setText(c);
+                float precio = datos.getParcelas().get(i).getPrecio();
+                String p = String.valueOf(precio);
+                txtPrecio.setText(p);
+                boolean luz = datos.getParcelas().get(i).isElectricidad();
+                {
+                    if(luz){
+                        comboLuz.setSelectedIndex(0);
+                    }
+                    else
+                        comboLuz.setSelectedIndex(1);
+                }
+                float descuento = datos.getParcelas().get(i).getDescuento();
+                String desc = String.valueOf(descuento);
+                txtDescuento.setText(desc);
+                
             }
         }
         
     }//GEN-LAST:event_comboParcelaActionPerformed
+
+    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+        
+    }//GEN-LAST:event_txtIdActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboLuz;
@@ -245,7 +272,7 @@ public Datos datos;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMetros;
     private javax.swing.JTextField txtPrecio;

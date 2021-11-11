@@ -24,7 +24,7 @@ public class Datos {
         
         // Creamos unas parcelas iniciales
         ModelParcela parcela1 = new ModelParcela(101, 10, 0, false, 100, true);
-        ModelParcela parcela2 = new ModelParcela(102, 30, 0, false, 250, true);
+        ModelParcela parcela2 = new ModelParcela(102, 30, 0, false, 250, false);
         ModelParcela parcela3 = new ModelParcela(103, 20, 0, false, 80, true);
         ModelParcela parcela4 = new ModelParcela(104, 5, 0, false, 20, true);
         ModelParcela parcela5 = new ModelParcela(105, 12, 0, false, 10, true);

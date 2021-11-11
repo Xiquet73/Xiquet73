@@ -117,4 +117,14 @@ public class ModelParcela {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
+
+    public boolean isElectricidad() {
+        return electricidad;
+    }
+
+    public void setElectricidad(boolean electricidad) {
+        this.electricidad = electricidad;
+    }
+    
+    
 }
