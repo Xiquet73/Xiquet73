@@ -87,7 +87,6 @@ public class Reservas extends javax.swing.JFrame {
         buttonDel = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listParcelasSelect = new javax.swing.JList<>();
-        jLabel5 = new javax.swing.JLabel();
         buttonReserva = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -140,10 +139,6 @@ public class Reservas extends javax.swing.JFrame {
         listParcelasSelect.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setViewportView(listParcelasSelect);
 
-        jLabel5.setForeground(new java.awt.Color(255, 153, 0));
-        jLabel5.setText("00.00 €/día");
-        jLabel5.setAlignmentX(0.5F);
-
         buttonReserva.setBackground(new java.awt.Color(255, 153, 0));
         buttonReserva.setText("Reserva");
         buttonReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +167,7 @@ public class Reservas extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1)
@@ -190,15 +185,9 @@ public class Reservas extends javax.swing.JFrame {
                             .addComponent(buttonAdd))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                                    .addComponent(buttonReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
-                                .addGap(22, 22, 22))))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                            .addComponent(buttonReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                        .addGap(22, 22, 22))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,9 +215,7 @@ public class Reservas extends javax.swing.JFrame {
                                 .addComponent(buttonAdd)
                                 .addGap(28, 28, 28)
                                 .addComponent(buttonDel)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(buttonReserva))
@@ -304,7 +291,6 @@ public class Reservas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
