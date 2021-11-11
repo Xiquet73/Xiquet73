@@ -104,7 +104,6 @@ public class Reserva {
         }
        precio_total= precio_dia * ((fecha_sal.getTime() - fecha_ini.getTime())) / CONVERSION_MS_DIAS;
             this.precio_total = precio_total;
-            System.out.println("precio total: " +precio_total);
             return precio_total;
     }
     
