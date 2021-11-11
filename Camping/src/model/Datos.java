@@ -16,7 +16,7 @@ public class Datos {
     
     
     public ArrayList<Parcela> parcelas = new ArrayList<Parcela>();
-    public ArrayList<ModelCliente> clientes = new ArrayList<ModelCliente>();
+    public ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
     public Datos() {
         
@@ -46,13 +46,15 @@ public class Datos {
         this.parcelas = parcelas;
     }
 
-    public ArrayList<ModelCliente> getClientes() {
-        return clientes;
+    public ArrayList<Reserva> getClientes() {
+        return reservas;
     }
 
-    public void setClientes(ArrayList<ModelCliente> clientes) {
-        this.clientes = clientes;
+    public void setClientes(ArrayList<Reserva> clientes) {
+        this.reservas = clientes;
     }
+
+
 }
 
 
