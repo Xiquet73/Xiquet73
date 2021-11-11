@@ -14,6 +14,7 @@ import model.Datos;
  *  camping como gestionar reservas, clientes, historicos entre otros.
  * 
  *  Direccion URL del repositorio: https://github.com/Xiquet73/Xiquet73
+ *  Tikets http://campanilla.uv.es/projects/l2_campingparty_g2/issues
  * 
  * @author L1_CampingParty_G2
  * @author Callejo, Miguel Angel
