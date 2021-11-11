@@ -28,8 +28,8 @@ public Datos datos;
         {
             if(datos.getReserva().get(i).getEstancia().equals(false))
             {
-                comboCliente.addItem(datos.getReserva().get(i).getCliente().getNombre());                
-            } 
+                comboCliente.addItem(datos.getReserva().get(i).getCliente().getNombre());         
+            }
         }
     }
 
