@@ -25,59 +25,59 @@ public class Gerente {
         this.tfnog = tfnog;
     }
     
-    public void getNombreG() {
+    public String getNombreG() {
         return nomg;
         }
     
-    public String setNombreG(String ng) {
+    public void setNombreG(String ng) {
         this.nomg = ng;
         }
 
-    public void getApellidosG() {
+    public String getApellidosG() {
         return apeg;
         }
 
-    public String setApellidosG(String ag) {
+    public void setApellidosG(String ag) {
         this.apeg = ag;
         }
     
-    public void getDniG() {
+    public String getDniG() {
         return dnig;
         }
     
-    public String setDniG(String d) {
+    public void setDniG(String d) {
         this.dnig = d;
         }
     
-    public void getDireccionG() {
+    public String getDireccionG() {
         return dirg;
         }
     
-    public String setDireccionG(String dg) {
+    public void setDireccionG(String dg) {
         this.dirg = dg;
         }
     
-    public void getLocalidadG() {
+    public String getLocalidadG() {
         return locg;
         }
     
-    public String setLocalidadG(String lg) {
+    public void setLocalidadG(String lg) {
         this.locg = lg;
         }
     
-    public void getCorreoG() {
+    public String getCorreoG() {
         return corg;
         }
 
-    public String setCorreoG(String cg) {
+    public void setCorreoG(String cg) {
         this.corg = cg;
         }
 
-    public void getTfnoG() {
+    public int getTfnoG() {
         return tfnog;
         }
 
-    public int setTfnoG(int tg) {
+    public void setTfnoG(int tg) {
         this.tfnog = tg;
         }
     
