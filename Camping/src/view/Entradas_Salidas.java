@@ -5,6 +5,13 @@
  */
 package view;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Datos;
 
 /**
@@ -21,13 +28,38 @@ public Datos datos;
         
         this.datos = datos;
         
+        
+        
+        initComponents();
+        
         for(int i = 0; i<datos.getReserva().size(); i++){
             if(!datos.getReserva().get(i).getEstancia()){
                 comboClientes.addItem(datos.getReserva().get(i).getCliente().getNombre());
             }
         }
         
-        initComponents();
+        
+        
+        for(int z = 0; z < datos.getReserva().size(); z++){
+        
+            if(comboClientes.getItemAt(0) == datos.getReserva().get(z).getCliente().getNombre()){
+                setFechas(datos.getReserva().get(z).getFecha_entrada(),datos.getReserva().get(z).getFecha_salida());
+            }
+        }
+        
+        
+        
+    }
+    
+    public void setFechas(Date f_in, Date f_sal){
+        
+        String pattern = "dd/MM/yy";
+        DateFormat df = new SimpleDateFormat(pattern);      
+        String f_in_txt = df.format(f_in);
+        String f_sal_txt = df.format(f_sal);
+
+        textFechaEntrada.setText(f_in_txt);
+        textFechaSalida.setText(f_sal_txt);
     }
 
     /**
@@ -41,10 +73,10 @@ public Datos datos;
 
         jPanel1 = new javax.swing.JPanel();
         comboClientes = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        textFechaEntrada = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        textFechaSalida = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -55,10 +87,14 @@ public Datos datos;
 
         comboClientes.setBackground(new java.awt.Color(102, 102, 102));
         comboClientes.setForeground(new java.awt.Color(255, 255, 255));
+        comboClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboClientesActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("01-01-01");
+        textFechaEntrada.setBackground(new java.awt.Color(102, 102, 102));
+        textFechaEntrada.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setForeground(new java.awt.Color(255, 153, 0));
         jLabel2.setText("0.0 €/día");
@@ -71,9 +107,8 @@ public Datos datos;
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("01-01-01");
+        textFechaSalida.setBackground(new java.awt.Color(102, 102, 102));
+        textFechaSalida.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("30 €");
@@ -81,6 +116,11 @@ public Datos datos;
         jButton1.setBackground(new java.awt.Color(255, 153, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Entrada");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(255, 153, 0));
         jLabel1.setText("-");
@@ -90,28 +130,31 @@ public Datos datos;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addContainerGap(120, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(72, 72, 72))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(72, 72, 72)
+                                .addComponent(textFechaEntrada)
+                                .addGap(28, 28, 28)
+                                .addComponent(textFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,8 +163,8 @@ public Datos datos;
                 .addComponent(comboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -155,6 +198,59 @@ public Datos datos;
         admin.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        // Obtengo el nombre del cliente seleccionado
+        // Obtengo la fecha de entrada
+        // Obtengo la fecha de salida
+        
+        int i = comboClientes.getSelectedIndex();
+        String f_in = textFechaEntrada.getText();
+        String f_sal = textFechaSalida.getText();
+        
+        Date fecha_entrada = Calendar.getInstance().getTime();
+        Date fecha_salida = Calendar.getInstance().getTime();
+        try {
+            fecha_entrada = new SimpleDateFormat("dd/MM/yy").parse(f_in);
+            fecha_salida = new SimpleDateFormat("dd/MM/yy").parse(f_sal);
+        } catch (ParseException ex) {
+            Logger.getLogger(Entradas_Salidas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        for(int z = 0; z < datos.getReserva().size(); z++){
+        
+            if(comboClientes.getItemAt(i) == datos.getReserva().get(z).getCliente().getNombre()){
+                datos.getReserva().get(z).setFecha_entrada(fecha_entrada);
+                datos.getReserva().get(z).setFecha_salida(fecha_salida);
+                datos.getReserva().get(z).setEstancia(true);
+            }
+        }
+        
+        Menu menu = new Menu(datos);
+        this.setVisible(false);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClientesActionPerformed
+        // TODO add your handling code here:
+        int i = comboClientes.getSelectedIndex();
+        
+        for(int z = 0; z < datos.getReserva().size(); z++){
+        
+            if(comboClientes.getItemAt(i) == datos.getReserva().get(z).getCliente().getNombre()){
+                setFechas(datos.getReserva().get(z).getFecha_entrada(),datos.getReserva().get(z).getFecha_salida());
+            }
+        }
+        
+        
+    }//GEN-LAST:event_comboClientesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboClientes;
@@ -164,8 +260,8 @@ public Datos datos;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField textFechaEntrada;
+    private javax.swing.JTextField textFechaSalida;
     // End of variables declaration//GEN-END:variables
 
 }
