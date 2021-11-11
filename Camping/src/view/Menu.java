@@ -118,7 +118,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Admin admin = new Admin();
+        Admin admin = new Admin(datos);
         this.setVisible(false);
         admin.pack();
         admin.setLocationRelativeTo(null);
