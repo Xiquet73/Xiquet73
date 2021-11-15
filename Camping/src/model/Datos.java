@@ -18,6 +18,7 @@ public class Datos {
     
     public ArrayList<ModelParcela> parcelas = new ArrayList<ModelParcela>();
     public ArrayList<ModelReserva> reservas = new ArrayList<ModelReserva>();
+    public ArrayList<ModelActividades> actividades = new ArrayList<ModelActividades>();
 
     public Datos() {
         
@@ -60,6 +61,19 @@ public class Datos {
         
     }
 
+    public ArrayList<ModelActividades> getActividades() {
+        return actividades;
+    }
+    
+    public void addActividad(ModelActividades actividad)
+    {
+        actividades.add(actividad);
+    }
+    
+    public void removeActividad(int i)
+    {
+        actividades.remove(i);
+    }
 
 }
 

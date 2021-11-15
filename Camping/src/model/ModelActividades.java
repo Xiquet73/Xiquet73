@@ -5,9 +5,6 @@
  */
 package model;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 /**
  *
  * @author Raga Casan, Ignacio 
@@ -16,107 +13,48 @@ import java.util.Date;
 public class ModelActividades {
     
     // Declaracion de variables
-    private int identificador;
-    private ArrayList<ModelCliente> clientes = new ArrayList<>();
-    private Date hora;
-    private TipoActividad actividad;
-    private ModelCliente cliente;
-    private ArrayList<ModelActividades> actividades = new ArrayList<>(); //todas las actividades??
-    private ArrayList<ModelActividades> actividades_dia = new ArrayList<>(); //Actividades que deberían mostrarse en el día
+    private String nombre;
+    private String hora;
+    String fecha;
+    String tipo;
 
-    /**
-     * Constructor de actividades
-     * @param identificador
-     * @param hora
-     * @param actividad 
-     */
-    public ModelActividades(int identificador, Date hora, TipoActividad actividad) {
-        this.identificador = identificador;
+    public ModelActividades(String nombre, String tipo, String fecha, String hora) {
+        this.nombre = nombre;
         this.hora = hora;
-        this.actividad = actividad;
+        this.fecha = fecha;
+        this.tipo = tipo;
     }
 
-    /**
-     * Devuelve el identificador de las actividades
-     * @return identificador
-     */
-    public int getIdentificador() {
-        return identificador;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIdentificador(int identificador) {
-        this.identificador = identificador;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-     /**
-     * Devuelve los clientes asignados a las actividades
-     * @return clientes
-     */
-    public ArrayList<ModelCliente> getClientes() {
-        return clientes;
-    }
-
-    public void setClientes(ArrayList<ModelCliente> clientes) {
-        this.clientes = clientes;
-    }
-
-     /**
-     * Devuelve la hora de la actividad
-     * @return hora
-     */
-    public Date getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-     /**
-     * Devuelve el tipo de las actividad
-     * @return actividad
-     */
-    public TipoActividad getActividad() {
-        return actividad;
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setActividad(TipoActividad actividad) {
-        this.actividad = actividad;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
     
-    /**
-     * Anyade una reserva de actividad al cliente
-     * @param actividades_cliente
-     * @return actividades_dia
-     */
-     public ArrayList reservaActividades(ArrayList<ModelActividades> actividades_cliente)
-    { 
-        for (int i=0; i < actividades.size(); i++)
-        {
-              if(actividades.get(i).equals(actividades_cliente))
-              {
-                  actividades_dia.add(actividades.get(i));        
-              } 
-        }
-        return actividades_dia;
-    }
-        
-    /**
-     * Quita al cliente de una actividad
-     * @param actividad_escogida
-     * @param cliente_actividad
-     * @return actividades_dia
-     */
-    public ArrayList cancelarActividad(ArrayList<ModelActividades> actividad_escogida, ModelCliente cliente_actividad)
-    {
-        
-        for (int i=0; i < actividades_dia.size(); i++)
-        {
-              if(actividades_dia.get(i).equals(actividad_escogida) && (cliente.getNombre()== cliente_actividad.getNombre()))
-              {
-                  actividades_dia.remove(i);
-              }  
-        }
-        return actividades_dia;
-    }
 }

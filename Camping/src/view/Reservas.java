@@ -103,6 +103,11 @@ public class Reservas extends javax.swing.JFrame {
 
         fecha_ini.setBackground(new java.awt.Color(102, 102, 102));
         fecha_ini.setForeground(new java.awt.Color(255, 255, 255));
+        fecha_ini.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha_iniActionPerformed(evt);
+            }
+        });
 
         fecha_sal.setBackground(new java.awt.Color(102, 102, 102));
         fecha_sal.setForeground(new java.awt.Color(255, 255, 255));
@@ -275,6 +280,10 @@ public class Reservas extends javax.swing.JFrame {
         modeloizq.remove(val);
         modeloder.addElement(id);
     }//GEN-LAST:event_buttonDelActionPerformed
+
+    private void fecha_iniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha_iniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fecha_iniActionPerformed
 
 
     

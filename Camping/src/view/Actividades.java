@@ -5,7 +5,9 @@
  */
 package view;
 
+import javax.swing.DefaultListModel;
 import model.Datos;
+import model.ModelActividades;
 
 /**
  *
@@ -13,15 +15,22 @@ import model.Datos;
  */
 public class Actividades extends javax.swing.JFrame {
 public Datos datos;
+public DefaultListModel modelActividades = new DefaultListModel();
     /**
      * Creates new form Actividades
      */
     public Actividades(Datos datos) {
         this.datos = datos;
         initComponents();
+        jListActividades.setModel(modelActividades);
         comboActividad.addItem("Frontón");
         comboActividad.addItem("Piscina");
         comboActividad.addItem("Juegos");
+        
+        for (int i = 0; i < datos.getActividades().size(); i++)
+        {
+            modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
+        }
         
         //Bucle con el que recuperaremos los clientes que tengan una reserva con el valor estancia a true para saber que estan en el camping
         for(int i = 0; i < datos.getReserva().size();i++)
@@ -48,7 +57,7 @@ public Datos datos;
         horaComboBox = new javax.swing.JComboBox<>();
         reservaBoton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jListActividades = new javax.swing.JList<>();
         eliminarBoton = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         fechaTextField = new javax.swing.JTextField();
@@ -74,21 +83,31 @@ public Datos datos;
         });
 
         horaComboBox.setBackground(new java.awt.Color(102, 102, 102));
-        horaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hora", "Item 2", "Item 3", "Item 4" }));
+        horaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10:00", "11:00", "12:00", "13:00", "17:00", "18:00", "19:00", "20:00", " " }));
 
         reservaBoton.setBackground(new java.awt.Color(255, 153, 0));
         reservaBoton.setText("Reserva");
+        reservaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reservaBotonActionPerformed(evt);
+            }
+        });
 
-        jList1.setBackground(new java.awt.Color(102, 102, 102));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        jListActividades.setBackground(new java.awt.Color(102, 102, 102));
+        jListActividades.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(jListActividades);
 
         eliminarBoton.setBackground(new java.awt.Color(193, 66, 66));
         eliminarBoton.setText("Eliminar");
+        eliminarBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarBotonActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 102, 0));
         jButton3.setText("Volver");
@@ -144,7 +163,7 @@ public Datos datos;
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(29, 29, 29)
                         .addComponent(eliminarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
@@ -186,15 +205,57 @@ public Datos datos;
         // TODO add your handling code here:
     }//GEN-LAST:event_fechaTextFieldActionPerformed
 
+    private void reservaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservaBotonActionPerformed
+        // TODO add your handling code here:
+        String nombre = comboCliente.getSelectedItem().toString();
+        String actividad = comboActividad.getSelectedItem().toString();
+        String fecha = fechaTextField.getText();
+        String hora = horaComboBox.getSelectedItem().toString();
+        ModelActividades act = new ModelActividades(nombre,actividad,fecha,hora);
+        jListActividades.removeAll();
+        datos.addActividad(act);
+        for (int i = 0; i < datos.getActividades().size(); i++)
+        {
+            modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
+        }
+    }//GEN-LAST:event_reservaBotonActionPerformed
+
+    private void eliminarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBotonActionPerformed
+        // TODO add your handling code here:
+        String texto = jListActividades.getSelectedValue();
+        int n = texto.indexOf(" ");
+        String nombre = "";
+        if(n != -1)
+        {
+            nombre = texto.substring(0 , n);
+        }
+        for(int i = 0; i < datos.getActividades().size(); i++)
+        {
+            if(datos.getActividades().get(i).getNombre().equals(nombre))
+            {
+                datos.removeActividad(i);
+            }
+        }
+        redibujar();
+    }//GEN-LAST:event_eliminarBotonActionPerformed
+
+    public void redibujar()
+    {
+        jListActividades.removeAll();
+        for (int i = 0; i < datos.getActividades().size(); i++)
+        {
+            modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboActividad;
     private javax.swing.JComboBox<String> comboCliente;
     private javax.swing.JButton eliminarBoton;
-    private javax.swing.JTextField fechaTextField;
+    public javax.swing.JTextField fechaTextField;
     private javax.swing.JComboBox<String> horaComboBox;
     private javax.swing.JButton jButton3;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jListActividades;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton reservaBoton;
