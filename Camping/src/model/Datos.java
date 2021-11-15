@@ -55,7 +55,10 @@ public class Datos {
         reservas.add(reserva);
         
     }
-    
+    public void addParcela(ModelParcela parcela){
+        parcelas.add(parcela);
+        
+    }
 
 
 }

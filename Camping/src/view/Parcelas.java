@@ -5,7 +5,10 @@
  */
 package view;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
 import model.Datos;
+import model.ModelParcela;
 
 /**
  *
@@ -13,6 +16,7 @@ import model.Datos;
  */
 public class Parcelas extends javax.swing.JFrame {
 public Datos datos;
+public DefaultComboBoxModel modeloParcela = new DefaultComboBoxModel();
 
     /**
      * Creates new form Parcelas
@@ -20,6 +24,8 @@ public Datos datos;
     public Parcelas(Datos datos) {
         this.datos = datos;
         initComponents();
+        
+        comboParcela.setModel(modeloParcela);
         int id;
         for (int i=0; i<datos.getParcelas().size();i++)
         {
@@ -42,7 +48,7 @@ public Datos datos;
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         comboParcela = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        crearJbutton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtMetros = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -72,8 +78,13 @@ public Datos datos;
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 0));
-        jButton1.setText("Crear Parcela");
+        crearJbutton.setBackground(new java.awt.Color(255, 153, 0));
+        crearJbutton.setText("Crear Parcela");
+        crearJbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearJbuttonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(204, 153, 0));
         jLabel2.setText("M2:");
@@ -87,6 +98,11 @@ public Datos datos;
         comboLuz.setBackground(new java.awt.Color(102, 102, 102));
         comboLuz.setForeground(new java.awt.Color(255, 255, 255));
         comboLuz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SI", "NO" }));
+        comboLuz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboLuzActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(204, 153, 0));
         jLabel3.setText("Codigo:");
@@ -164,7 +180,7 @@ public Datos datos;
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(comboParcela, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(31, 31, 31)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(crearJbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -177,7 +193,7 @@ public Datos datos;
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(crearJbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -259,10 +275,48 @@ public Datos datos;
         
     }//GEN-LAST:event_txtIdActionPerformed
 
+    private void crearJbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJbuttonActionPerformed
+        boolean l;
+        String metros = txtMetros.getText();
+        float m = Float.parseFloat(metros);
+        String id = txtId.getText();
+        int iden = Integer.parseInt(id);  //Cambiar
+        int luz = comboLuz.getSelectedIndex();
+        if (luz == 0){
+           l = true;
+        }
+        else 
+        {
+            comboLuz.setSelectedIndex(1);
+            l = false;
+        }
+        String precio = txtPrecio.getText();
+        float p = Float.parseFloat(precio);
+        String descuento = txtPrecio.getText();
+        float desc = Float.parseFloat(descuento);
+        
+        ModelParcela parcela = new ModelParcela(iden,m,desc,false, p,l);
+        datos.addParcela(parcela);
+        
+        modeloParcela.removeAllElements();
+        
+        for (int i=0; i<datos.getParcelas().size();i++)
+        {
+            int identificador = datos.getParcelas().get(i).getIdentificador();
+            String identi = Integer.toString(identificador);
+            comboParcela.addItem(identi);
+            
+        }
+    }//GEN-LAST:event_crearJbuttonActionPerformed
+
+    private void comboLuzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLuzActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboLuzActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboLuz;
     private javax.swing.JComboBox<String> comboParcela;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton crearJbutton;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
