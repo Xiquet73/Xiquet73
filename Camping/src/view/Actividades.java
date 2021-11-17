@@ -28,7 +28,8 @@ public DefaultListModel modelActividades = new DefaultListModel();
         comboActividad.addItem("Juegos");
         
         for (int i = 0; i < datos.getActividades().size(); i++)
-        {
+        {   
+            
             modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
         }
         
@@ -211,11 +212,22 @@ public DefaultListModel modelActividades = new DefaultListModel();
         String actividad = comboActividad.getSelectedItem().toString();
         String fecha = fechaTextField.getText();
         String hora = horaComboBox.getSelectedItem().toString();
+        // Creo el modelo del JList
         ModelActividades act = new ModelActividades(nombre,actividad,fecha,hora);
+        
+        // Limpo de elementos el JList
         jListActividades.removeAll();
+        
+        // Vacio el modelo de actividades
+        modelActividades.clear();
+        
+        // Añado el elemento
         datos.addActividad(act);
+        
+        // Relleno de nuevo el modelo de actividades
         for (int i = 0; i < datos.getActividades().size(); i++)
         {
+            System.out.println("Control");
             modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
         }
     }//GEN-LAST:event_reservaBotonActionPerformed
@@ -236,7 +248,16 @@ public DefaultListModel modelActividades = new DefaultListModel();
                 datos.removeActividad(i);
             }
         }
-        redibujar();
+        modelActividades.clear();
+        
+        // Relleno de nuevo el modelo de actividades
+        for (int i = 0; i < datos.getActividades().size(); i++)
+        {
+            System.out.println("Control");
+            modelActividades.addElement(datos.getActividades().get(i).getNombre() + "    " + datos.getActividades().get(i).getTipo() + "    " + datos.getActividades().get(i).getFecha()+ "    " + datos.getActividades().get(i).getHora());
+        }
+        
+        //redibujar();
     }//GEN-LAST:event_eliminarBotonActionPerformed
 
     public void redibujar()
