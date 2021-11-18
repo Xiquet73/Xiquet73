@@ -7,6 +7,7 @@ package model;
 
 import java.util.ArrayList;
 import view.Cliente;
+import model.Datos;
 
 /**
  *
@@ -21,33 +22,39 @@ public class FachadaCrearParcela {
     boolean reservado, electricidad;
     private float precio;
 
-    public FachadaCrearParcela(Datos datos, float tamanyo, float descuento, boolean reservado, boolean electricidad, float precio) {
+    public FachadaCrearParcela(Datos datos, float tamanyo, float descuento, boolean electricidad, float precio) {
         this.datos = datos;
         this.tamanyo = tamanyo;
         this.descuento = descuento;
-        this.reservado = reservado;
+        this.reservado = false;
         this.electricidad = electricidad;
         this.precio = precio;
+        this.CrearParcelaNueva(this.datos, this.tamanyo, this.descuento, this.reservado,
+                this.precio, this.electricidad);
     }
    
     
     
-    public void CrearParcelaNueva(){
+    public void CrearParcelaNueva(Datos datos, float tamanyo, float descuento, boolean reservado, float precio, boolean electricidad){
     int identificador;
     int max = -1;
     
-    for (int i=0;i <= datos.parcelas.size();i++)
+    for (int i=0; i < datos.parcelas.size(); i++)
     {
-        identificador = datos.parcelas.get(i).getIdentificador();
+        identificador = this.datos.parcelas.get(i).getIdentificador();
         if(max < identificador)
         {
-            max= identificador;
+            max = identificador;
         }
     }
         
-    max = max +1;
-    ModelParcela parcela = new ModelParcela(max,tamanyo,descuento,reservado,precio,electricidad);
+    max++;
     
+    
+    ModelParcela parcela = new ModelParcela(max,tamanyo,descuento,
+            reservado,precio,electricidad);
+    
+    datos.addParcela(parcela);
     }
 
     

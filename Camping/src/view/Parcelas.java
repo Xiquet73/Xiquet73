@@ -91,6 +91,11 @@ public DefaultComboBoxModel modeloParcela = new DefaultComboBoxModel();
 
         txtMetros.setBackground(new java.awt.Color(102, 102, 102));
         txtMetros.setForeground(new java.awt.Color(255, 255, 255));
+        txtMetros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMetrosActionPerformed(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(204, 153, 0));
         jLabel4.setText("Luz:");
@@ -312,6 +317,10 @@ public DefaultComboBoxModel modeloParcela = new DefaultComboBoxModel();
     private void comboLuzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLuzActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboLuzActionPerformed
+
+    private void txtMetrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMetrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMetrosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboLuz;
