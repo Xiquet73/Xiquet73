@@ -39,6 +39,10 @@ public class ModelParcela {
         this.precio = precio;
     }
 
+    ModelParcela() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Devuelve el identificador de la parcela
      * @return identificador
