@@ -32,7 +32,7 @@ public class FachadaCrearParcelaTest {
         FachadaCrearParcela creacion = new FachadaCrearParcela(datos,tamanyo,descuento,electricidad,precio);
         int res2 = datos.getParcelas().size();
          
-        assertTrue(res1 + 1 == res2);
+        assertTrue((res1 + 1) == res2);
        
     }
     
